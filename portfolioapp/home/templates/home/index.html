@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block nav_home %}
+    <li class="has-sub active">
+        <a href="{{ url_for('home.index_home') }}">
+            <span>Home</span>
+        </a>
+    </li>
+{% endblock %}
+
+{% block wrapper %}
+<!-- wrapper -->
+<div id="wrapper">
+
+        <!-- parallax -->
+        <div class="parallax" style="background-image: url(static/images/home/{{ home.image }})">
+            <div class="info">
+                <h2 data-in-effect="wow flipInX">{{ home.text }}</h2>
+            </div>
+        </div>
+        <!-- /parallax -->
+
+        <div class="container">
+          <div class="row">
+           <div class="col-md-12">
+
+            <div id="grid-classic" class="cbp classicAnim">
+
+                {% for image in image_list %}
+                    <div class="cbp-item">
+                          <div class="image-box">
+                             <img src="static/images/home/photo/{{ image }}" alt="">
+                          </div>
+                    </div>
+                {% endfor %}
+            </div>
+          </div>
+         </div>
+        </div>
+
+</div>
+<!-- /wrapper -->
+{% endblock %}

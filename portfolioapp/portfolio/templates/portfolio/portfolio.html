@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block nav_portfolio %}
+    <li class="has-sub active">
+        <a href="{{ url_for('portfolio.index_portfolio', pk=1) }}">
+            <span>Portfolio</span>
+        </a>
+    </li>
+{% endblock %}
+
+{% block wrapper %}
+<!-- wrapper -->    
+<div id="wrapper">
+
+<div class="container">
+   <div class="row">
+
+
+      <div class="col-md-7">
+          <div class="gallery-projects" style="margin-bottom: 25px;">
+              <div class="overlay-box">
+                  <a href="static/images/portfolio/{{ portfolio.image_1 }}" title="{{ portfolio.name }}" class="showcase" data-rel="lightcase:gallery">
+                      <div class="overlay-wrap">
+                          <div class="overlay">
+                              <i class="fa fa-search"></i>
+                          </div>
+                      </div>
+                      <img src="static/images/portfolio/{{ portfolio.image_1 }}" alt="">
+                  </a>
+              </div>
+            </div>
+
+          {% for image in image_list %}
+          <div class="gallery-projects" style="margin-bottom: 25px;">
+              <div class="overlay-box">
+                  <a href="static/images/portfolio/{{ image }}" title="{{ portfolio.name }}" class="showcase" data-rel="lightcase:gallery">
+                      <div class="overlay-wrap">
+                          <div class="overlay">
+                              <i class="fa fa-search"></i>
+                          </div>
+                      </div>
+                  </a>
+              </div>
+            </div>
+          {% endfor %}
+
+<!--      <div class="gallery-projects">-->
+<!--        <div class="overlay-box">-->
+<!--            {% for image in image_list %}-->
+<!--                <a href="static/images/portfolio/{{ image }}" class="showcase" data-rel="lightcase:gallery">-->
+<!--            {% endfor %}-->
+<!--                <div class="overlay-wrap">-->
+<!--                    <div class="overlay">-->
+<!--                        <i class="fa fa-search"></i>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <img src="static/images/portfolio/{{ portfolio.image_1 }}" alt="">-->
+<!--            </a>-->
+<!--        </div>-->
+<!--      </div>-->
+    </div>
+
+          <div class="col-md-5 single-project">
+         <h3 style="font-size: 24px;margin-bottom: 15px; ">{{ portfolio.name }}</h3>
+         <p>{{ portfolio.text }}</p>
+         <div class="project-details">
+            <h4>Project details</h4>
+            <h5>Author</h5>
+            <p>{{ portfolio.author }}</p>
+            <h5>Client</h5>
+            <p>{{ portfolio.client }}</p>
+            <h5>Project date</h5>
+            <p>{{ portfolio.date }}</p>
+            <h5>Project location</h5>
+            <p>{{ portfolio.location }}</p>
+         </div>
+      </div>
+
+   </div>
+
+   <!-- NAVIGATION -->
+   <div class="portfolio-single-nav">
+      <div class="single-navigation">
+          {% if next_portfolio %}
+            <div class="next-button"><a href="{{ url_for('portfolio.index_portfolio', pk=pk+1) }}" class="single-link-nav">Next project<i class="fa fa-angle-right"></i></a></div>
+          {% endif %}
+          {% if pk != 1 %}
+             <div class="prev-button"><a href="{{ url_for('portfolio.index_portfolio', pk=pk-1) }}" class="single-link-nav"><i class="fa fa-angle-left"></i>Prev project</a></div>
+          {% endif %}
+      </div>
+   </div>
+   <!-- END NAVIGATION -->
+</div>
+
+</div>
+
+<!-- /wrapper -->
+{% endblock%}
+
+</body>
+</html>

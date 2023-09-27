@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block nav_contact %}
+    <li class="has-sub active">
+        <a href="{{ url_for('contact.index_contact') }}">
+            <span>Contact</span>
+        </a>
+    </li>
+{% endblock %}
+
+{% block wrapper %}
+
+<div id="wrapper">
+
+        <!-- parallax -->
+        <div class="parallax" style="background-image: url(static/images/contact/{{ contact.image }}); margin-bottom: 0;">
+            <div class="info">
+                <h2 data-in-effect="wow fadeIn">{{ contact.name }}</h2>
+            </div>
+        </div>
+        <!-- /parallax -->
+
+  <div class="container">
+    <div class="row">
+
+            <div class="col-md-6">
+                
+            <!-- google map -->
+                <div id="google-map" style="margin-top: 60px;">
+                <div id="map" style="height: 700px"></div>
+                </div>
+            <!-- /google map -->
+
+            </div>
+
+            <div class="col-md-6">
+                
+                <h3 style="margin-top: 60px; margin-bottom: 15px;">{{ contact.text_name }}</h3>
+
+                <p>{{ contact.text }}</p>
+
+                <div class="contact-form" style="margin-top: 35px;" >
+                    {% for message in get_flashed_messages() %}
+                    <div class="flash" style="color: red">{{ message }}</div>
+                    {% endfor %}
+                    <div id="fields">
+                        <form action="{{ url_for('contact.index_contact') }}" method=post>
+
+                          <p>{{ form.name.label }}</p>
+                          <p>{{ form.name }}</p>
+                          <p>{{ form.email.label }}</p>
+                          <p>{{ form.email }}</p>
+                          <p>{{ form.phone.label }}</p>
+                          <p>{{ form.phone }}</p>
+                          <p>{{ form.message.label }}</p>
+                          <p>{{ form.message }}</p>
+                          {{ form.submit }}
+                        </form>
+                     </div>
+                  </div>
+
+            </div>
+
+     </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block javascript %}
+
+    <!-- Javascript files -->
+    <!-- jQuery -->
+    <script src="static/js/plugins/jquery-1.12.4.min.js"></script>
+    <!-- Modernizr -->
+    <script src="static/js/plugins/modernizr.js"></script>
+    <!-- jQuery.appear -->
+    <script src="static/js/plugins/jquery.appear.js"></script>
+    <!-- jQuery Validation Plugin -->
+    <script src="static/js/plugins/jquery.validate.js"></script>
+    <!-- Lettering -->
+    <script src="static/js/plugins/lettering.js"></script>
+    <!-- Textillate -->
+    <script src="static/js/plugins/textillate.js"></script>
+    <!-- Wow -->
+    <script src="static/js/plugins/wow.js"></script>
+    <!-- Jarallax -->
+    <script src="static/js/plugins/jarallax.js"></script>
+    <!-- Lightcase -->
+    <script src="static/js/plugins/lightcase.js"></script>
+    <!-- Skills bar -->
+    <script src="static/js/plugins/skills-bar.js"></script>
+    <!-- Slick Nav -->
+    <script src="static/js/plugins/slick-nav.js"></script>
+    <!-- Flex Slider -->
+    <script src="static/js/plugins/flexslider.js"></script>
+    <!-- Images Loaded -->
+    <script src="static/js/plugins/images-loaded.js"></script>
+    <!-- Isotope -->
+    <script src="static/js/plugins/isotope.js"></script>
+    <!-- Sticky Plugin -->
+    <script src="static/js/plugins/jquery.sticky.js"></script>
+    <!-- Cube Portfolio -->
+    <script src="static/js/plugins/jquery.cubeportfolio.min.js"></script>
+    <!-- Custom -->
+    <script src="static/js/main.js"></script>
+    <!-- Yandex Map-->
+    <script src="https://api-maps.yandex.ru/v3/?apikey=your_key=ru_RU"></script>
+    <script>
+      let map;
+      main();
+      async function main() {
+          await ymaps3.ready;
+
+          map = new ymaps3.YMap(document.getElementById('map'), {
+              location: {
+                  center: [0, 0],
+                  zoom: 0
+              }
+          });
+
+          map.addChild(new ymaps3.YMapDefaultSchemeLayer());
+      }
+    </script>
+
+{% endblock %}
+    
