@@ -13,7 +13,7 @@ a map to indicate the office, as well as an abou page, with an interesting perfo
 The site design is based on
 [template Rex](https://themeforest.net/item/rex-clean-minimal-portfolio-html5-template/25023918),
 
-Backend site is implemented in python 3.10, using the flask 
+Backend site is implemented in python 3.10, using the
 [Flask framework](https://flask.palletsprojects.com/en/2.3.x/)
 
 Еhe site was launched on a vps server ubuntu, with the help -
@@ -67,5 +67,5 @@ notification, and your portfolio website for a photographer will be ready.
 ___
 
 
-### Обратная связь
+### Feedback
 - ser.alex.serb@gmail.com
